@@ -30,6 +30,20 @@ public class Restaurant {
     public List<Item> getMenu() {
         return menu;
     }
+ public int getOrderValue(List<String> selectedItems){
+        int orderValue =0;
+        Item itemOrdered=null;
+
+        for(String item: selectedItems){
+            itemOrdered = findItemByName(item);
+            orderValue += itemOrdered.getPrice();
+        }
+        return orderValue;
+    }
+
+    public void displayOrderValue(List<String> selectedItems){
+        System.out.println("Your order will cost : Rs." + getOrderValue(selectedItems));
+    }
 
     private Item findItemByName(String itemName){
         for(Item item: menu) {
